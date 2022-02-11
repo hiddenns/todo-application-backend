@@ -4,9 +4,7 @@ import com.todolist.todoapplication.entity.Todo;
 import com.todolist.todoapplication.entity.User;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 
 @Repository
 public class RepositoryTodo {
@@ -19,7 +17,11 @@ public class RepositoryTodo {
     }
 
     public List<Todo> fetchAllTodoItems(){
-        return todoItemsRepository.findAll();
+        Iterable<Todo> todoIterable = todoItemsRepository.findAll();
+        //Iterator<Todo> todoIterator = todoIterable.iterator();
+        List<Todo> todoList = new ArrayList<>();
+        todoIterable.forEach(todoList::add);
+        return todoList;
     }
 
     public List<User> fetchAllUsers() {
@@ -35,17 +37,25 @@ public class RepositoryTodo {
     }
 
     public void deleteTodo(Long id) {
-        Optional<Todo> optionalTodo = todoItemsRepository.findAll()
-                .stream()
-                .filter((item) -> item.getId().equals(id)).
-                findAny();
+//        Optional<Todo> optionalTodo = todoItemsRepository.findAll().
+//                .stream()
+//                .filter((item) -> item.getId().equals(id)).
+//                findAny();
+        Iterable<Todo> todoIterable = todoItemsRepository.findAll();
 
-        if (optionalTodo.isPresent()) {
-            Todo todo = optionalTodo.get();
-            todoItemsRepository.delete(todo);
-        } else {
-            throw new NoSuchElementException("todo not found!");
+        for (Todo todo: todoIterable) {
+            if (todo.getId().equals(id)){
+                todoItemsRepository.delete(todo);
+                break;
+            }
         }
+
+//        if (optionalTodo.isPresent()) {
+//            Todo todo = optionalTodo.get();
+//            todoItemsRepository.delete(todo);
+//        } else {
+//            throw new NoSuchElementException("todo not found!");
+//        }
 
 
     }

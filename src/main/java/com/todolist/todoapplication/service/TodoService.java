@@ -18,9 +18,9 @@ public class TodoService {
         return repositoryTodo.fetchAllTodoItems();
     }
 
-    public List<User> fetchAllUsers() {
-        return repositoryTodo.fetchAllUsers();
-    }
+//    public List<User> fetchAllUsers() {
+//        return repositoryTodo.fetchAllUsers();
+//    }
 
     public Todo updateTodo(Long id, Todo todo) {
         repositoryTodo.updateTodo(id, todo);
@@ -29,6 +29,7 @@ public class TodoService {
 
     public Todo createNewTodo(String content) {
         Todo todo = new Todo();
+        todo.setContent(content);
         repositoryTodo.createNewTodo(todo);
         return todo;
     }

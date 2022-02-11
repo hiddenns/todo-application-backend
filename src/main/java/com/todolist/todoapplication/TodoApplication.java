@@ -13,10 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
-public class TodoApplication implements CommandLineRunner {
+public class TodoApplication { //implements CommandLineRunner
 
-	@Autowired
-	private UserRepository userRepository;
+	//@Autowired
+	//private UserRepository userRepository;
 
 	@Autowired
 	private TodoRepository todoRepository;
@@ -25,29 +25,29 @@ public class TodoApplication implements CommandLineRunner {
 		SpringApplication.run(TodoApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		User user = new User();
-		user.setUsername("Andrii");
-		user.setPassword("1234");
-
-		User user2 = new User(2L, "Bogdan", "1234567", null);
-
-		Todo todo = new Todo();
-		todo.setContent("Learn Spring!");
-
-		Todo todo2 = new Todo();
-		todo2.setContent("Learn Hibernate!");
-		todo2.setCompleted(Boolean.TRUE);
-
-		user.getTodoList().add(todo);
-		user.getTodoList().add(todo2);
-
-		todoRepository.save(todo);
-		todoRepository.save(todo2);
-
-		userRepository.save(user);
-		userRepository.save(user2);
-
-	}
+//	@Override
+//	public void run(String... args) throws Exception {
+//		//User user = new User();
+//		//user.setUsername("Andrii");
+//		//user.setPassword("1234");
+//
+//		//User user2 = new User(2L, "Bogdan", "1234567", null);
+//
+//		Todo todo = new Todo();
+//		todo.setContent("Learn Spring!");
+//
+//		Todo todo2 = new Todo();
+//		todo2.setContent("Learn Hibernate!");
+//		todo2.setCompleted(Boolean.TRUE);
+//
+//		//user.getTodoList().add(todo);
+//		//user.getTodoList().add(todo2);
+//
+//		todoRepository.save(todo);
+//		todoRepository.save(todo2);
+//
+//		//userRepository.save(user);
+//		//userRepository.save(user2);
+//
+//	}
 }
