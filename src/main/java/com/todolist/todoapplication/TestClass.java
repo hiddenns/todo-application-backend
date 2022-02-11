@@ -1,2 +1,4 @@
-package com.todolist.todoapplication;public class TestClass {
+package com.todolist.todoapplication;
+
+public class TestClass {
 }
