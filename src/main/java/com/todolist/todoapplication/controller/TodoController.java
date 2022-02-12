@@ -16,6 +16,11 @@ public class TodoController {
     @Autowired
     private TodoService todoService;
 
+    @GetMapping("/api/test")
+    public ResponseEntity<?> testFunc(){
+        return ResponseEntity.ok("it`s work");
+    }
+
     @GetMapping("/api/todoItems")
     public ResponseEntity<?> fetchAllTodoItems(){
         List<Todo> todoList = todoService.fetchAllTodoItems();
