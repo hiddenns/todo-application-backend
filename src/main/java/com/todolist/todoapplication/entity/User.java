@@ -1,21 +1,25 @@
 package com.todolist.todoapplication.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 @Entity
+@Table(name="user")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String username;
     private String password;
 
-    @OneToMany
-    private List<Todo> todoList = new ArrayList<>();
+//    @OneToMany
+//    private List<Todo> todoList = new ArrayList<>();
 
     public User(){
 
@@ -25,7 +29,7 @@ public class User {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.todoList = todoList;
+        //this.todoList = todoList;
     }
 
     public Long getId() {
@@ -52,11 +56,11 @@ public class User {
         this.password = password;
     }
 
-    public List<Todo> getTodoList() {
-        return todoList;
-    }
+    //public List<Todo> getTodoList() {
+    //    return todoList;
+    //}
 
-    public void setTodoList(List<Todo> todoList) {
-        this.todoList = todoList;
-    }
+    //public void setTodoList(List<Todo> todoList) {
+    //    this.todoList = todoList;
+    //}
 }

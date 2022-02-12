@@ -39,7 +39,7 @@ public class UserController {
         User user = userRepository.findById(userId).orElseThrow(() -> new NoSuchElementException());
         Todo todo = new Todo();
         todo.setContent(todoRequest.getContent());
-        user.getTodoList().add(todo);
+        //user.getTodoList().add(todo);
         todoRepository.save(todo);
         userRepository.save(user);
     }
@@ -55,7 +55,7 @@ public class UserController {
     public void deleteTodo(@PathVariable Long userId ,@PathVariable Long todoId){
         Todo todo = todoRepository.findById(todoId).orElseThrow(() -> new NoSuchElementException());
         User user = userRepository.findById(userId).orElseThrow(() -> new NoSuchElementException());
-        user.getTodoList().remove(todo);
+        //user.getTodoList().remove(todo);
         todoRepository.delete(todo);
     }
 
