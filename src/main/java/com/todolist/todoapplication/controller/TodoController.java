@@ -27,11 +27,11 @@ public class TodoController {
         return ResponseEntity.ok(todoList);
     }
 
-//    @GetMapping("/api/users")
-//    public ResponseEntity<?> fetchAllUsers(){
-//        List<User> userList = todoService.fetchAllUsers();
-//        return ResponseEntity.ok(userList);
-//    }
+    @GetMapping("/api/users")
+    public ResponseEntity<?> fetchAllUsers(){ /////// ???????
+        List<User> userList = todoService.fetchAllUsers();
+        return ResponseEntity.ok(userList);
+    }
 
     @PostMapping("/api/todoItems")
     public ResponseEntity<?> createNewTodo(@RequestBody String content){

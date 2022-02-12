@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.NoSuchElementException;
 
 @RestController
+@CrossOrigin(origins = "https://todo-application-frontend.herokuapp.com")
 @RequestMapping("/users")
 public class UserController {
     private UserRepository userRepository;

@@ -1,6 +1,7 @@
 package com.todolist.todoapplication.repository;
 
 import com.todolist.todoapplication.entity.Todo;
+import com.todolist.todoapplication.entity.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
@@ -23,9 +24,22 @@ public class RepositoryTodo {
         return todoList;
     }
 
-//    public List<User> fetchAllUsers() {
-//        return userRepository.findAll();
-//    }
+    public List<User> fetchAllUsers() {
+        //return userRepository.findAll();
+        List<User> userList = new ArrayList<>();
+        User user1 = new User();
+        user1.setUsername("Nikita");
+        user1.setUsername("123456");
+
+        User user2 = new User();
+        user2.setUsername("Nikita 2");
+        user2.setUsername("123456");
+
+        userList.add(user1);
+        userList.add(user2);
+
+        return userList;
+    }
 
     public void updateTodo(Long id, Todo todoItemContent) {
         todoItemsRepository.updateTodoInfoById(todoItemContent.getContent(), todoItemContent.getCompleted(), id);
