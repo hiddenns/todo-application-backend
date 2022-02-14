@@ -6,8 +6,10 @@ import com.todolist.todoapplication.repository.TodoRepository;
 import com.todolist.todoapplication.repository.UserRepository;
 import com.todolist.todoapplication.request.AddTodoRequest;
 import com.todolist.todoapplication.request.AddUserRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @RestController
@@ -22,12 +24,18 @@ public class UserController {
         this.todoRepository = todoRepository;
     }
 
+//    @GetMapping("/api/users")
+//    public ResponseEntity<?> fetchAllUsers(){ /////// ???????
+//        List<User> userList = todoService.fetchAllUsers();
+//        return ResponseEntity.ok(userList);
+//    }
+
     @GetMapping("/{userId}")
     public User getUserById(@PathVariable Long userId){
         return userRepository.findById(userId).orElseThrow(() -> new NoSuchElementException());
     }
 
-    @PostMapping()
+    @PostMapping("/user")
     public User addUser(@RequestBody AddUserRequest userRequest){
         User user = new User();
         user.setUsername(userRequest.getUsername());

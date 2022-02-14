@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+
+    <body>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+
+        <p th:text="'Hello, ' + ${name} + '!'" \>
+
+        <table>
+            <thead>
+            <tr>
+                <th> Id </th>
+                <th> Content </th>
+                <th> Completed </th>
+            </tr>
+            </thead>
+
+            <tbody>
+<!--            <tr th:if="${todos.empty}">-->
+<!--                <td colspan="2"> No Books Available </td>-->
+<!--            </tr>-->
+            <tr th:each="todo : ${todos}">
+                <td><span th:text="${todo.id}"> Id </span></td>
+                <td><span th:text="${todo.content}"> Content </span></td>
+                <td><span th:text="${todo.completed}"> Completed </span></td>
+            </tr>
+            </tbody>
+
+        </table>
+
+<!--        <p th:text="'Hello, ' + ${todos} + '!'" \>-->
+
+    </body>
+
+</html>

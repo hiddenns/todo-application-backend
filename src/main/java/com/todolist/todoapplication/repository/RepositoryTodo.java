@@ -72,4 +72,13 @@ public class RepositoryTodo {
 
 
     }
+
+    public User findUserNyUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    public void saveUser(User user) {
+        System.out.println("rep: user save");
+        userRepository.save(user);
+    }
 }

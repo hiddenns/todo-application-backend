@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name="user")
+@Table(name="usr")
 public class User {
 
     @Id
@@ -18,8 +18,8 @@ public class User {
     private String username;
     private String password;
 
-//    @OneToMany
-//    private List<Todo> todoList = new ArrayList<>();
+    //@OneToMany(mappedBy = "todo list")
+    //private List<Todo> todoList = new ArrayList<>();
 
     public User(){
 
@@ -56,11 +56,11 @@ public class User {
         this.password = password;
     }
 
-    //public List<Todo> getTodoList() {
-    //    return todoList;
-    //}
-
-    //public void setTodoList(List<Todo> todoList) {
-    //    this.todoList = todoList;
-    //}
+//    public List<Todo> getTodoList() {
+//        return todoList;
+//    }
+//
+//    public void setTodoList(List<Todo> todoList) {
+//        this.todoList = todoList;
+//    }
 }

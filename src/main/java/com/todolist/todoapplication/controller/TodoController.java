@@ -1,20 +1,21 @@
 package com.todolist.todoapplication.controller;
 
 import com.todolist.todoapplication.entity.Todo;
-import com.todolist.todoapplication.entity.User;
-import com.todolist.todoapplication.service.TodoService;
+import com.todolist.todoapplication.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
-@RestController
+@Controller
 @CrossOrigin(origins = "https://todo-application-frontend.herokuapp.com")
-public class TodoController {
+public class TodoController{
 
     @Autowired
-    private TodoService todoService;
+    private MainService todoService;
 
     @GetMapping("/api/test")
     public ResponseEntity<?> testFunc(){
@@ -25,12 +26,6 @@ public class TodoController {
     public ResponseEntity<?> fetchAllTodoItems(){
         List<Todo> todoList = todoService.fetchAllTodoItems();
         return ResponseEntity.ok(todoList);
-    }
-
-    @GetMapping("/api/users")
-    public ResponseEntity<?> fetchAllUsers(){ /////// ???????
-        List<User> userList = todoService.fetchAllUsers();
-        return ResponseEntity.ok(userList);
     }
 
     @PostMapping("/api/todoItems")

@@ -4,12 +4,11 @@ import com.todolist.todoapplication.entity.Todo;
 import com.todolist.todoapplication.entity.User;
 import com.todolist.todoapplication.repository.RepositoryTodo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class TodoService {
+@org.springframework.stereotype.Service
+public class MainService {
 
     @Autowired
     RepositoryTodo repositoryTodo;
@@ -36,5 +35,14 @@ public class TodoService {
 
     public void deleteTodo(Long id) {
         repositoryTodo.deleteTodo(id);
+    }
+
+    public User findUserByUsername(String username) {
+        return repositoryTodo.findUserNyUsername(username);
+    }
+
+    public void saveUser(User user) {
+        System.out.println("service: user save");
+        repositoryTodo.saveUser(user);
     }
 }
