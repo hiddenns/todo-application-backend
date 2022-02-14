@@ -3,6 +3,7 @@ package com.todolist.todoapplication.controller;
 import com.todolist.todoapplication.entity.User;
 import com.todolist.todoapplication.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,6 +33,12 @@ public class RegistrationController {
         mainService.saveUser(user);
         System.out.println("controller: user save");
         return "redirect:/login";
+    }
+
+    @GetMapping("/test")
+    public String test(@AuthenticationPrincipal User user){
+        System.out.println(user.getUsername() + " " + user.getId());
+        return "main";
     }
 
 }

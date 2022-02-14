@@ -1,5 +1,6 @@
 package com.todolist.todoapplication.entity;
 
+import com.todolist.todoapplication.service.UserService;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -15,14 +16,27 @@ public class Todo {
     private String content;
     private Boolean completed = Boolean.FALSE;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Todo(){
         this.content = "TASK";
     }
 
-    public Todo(Long id, String content, Boolean completed) {
+    public Todo(Long id, String content, Boolean completed, User user) {
         this.id = id;
         this.content = content;
         this.completed = completed;
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Long getId() {

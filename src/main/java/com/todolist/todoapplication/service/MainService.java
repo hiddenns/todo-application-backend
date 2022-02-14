@@ -26,9 +26,17 @@ public class MainService {
         return todo;
     }
 
-    public Todo createNewTodo(String content) {
+    public Todo createNewTodo(String content) { // delete
         Todo todo = new Todo();
         todo.setContent(content);
+        repositoryTodo.createNewTodo(todo);
+        return todo;
+    }
+
+    public Todo createNewTodo(User user, String content) {
+        Todo todo = new Todo();
+        todo.setContent(content);
+        todo.setUser(user);
         repositoryTodo.createNewTodo(todo);
         return todo;
     }
@@ -44,5 +52,9 @@ public class MainService {
     public void saveUser(User user) {
         System.out.println("service: user save");
         repositoryTodo.saveUser(user);
+    }
+
+    public List<Todo> fetchTodosByUser(User user) {
+        return repositoryTodo.findTodosByUser(user);
     }
 }

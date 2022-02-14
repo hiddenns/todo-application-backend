@@ -1,10 +1,13 @@
 package com.todolist.todoapplication.controller;
 
 import com.todolist.todoapplication.entity.Todo;
+import com.todolist.todoapplication.entity.User;
 import com.todolist.todoapplication.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,15 +27,16 @@ public class MainController {
 //    }
 
     @GetMapping("/main")
-    public String main() {
+    public String showAll(@AuthenticationPrincipal User user, Model model) {
+        List<Todo> todoList = todoService.fetchTodosByUser(user);
+        model.addAttribute("todos", todoList);
         return "main";
     }
 
-    @GetMapping("main/allTodos")
-    public String showAll(Map<String, Object> model) {
-        //model.addAttribute("todos", todoService.fetchAllTodoItems());
-        model.put("todos", todoService.fetchAllTodoItems());
-        return "main";
+    @PostMapping("/todo")
+    public String addTodo(@AuthenticationPrincipal User user,@RequestParam(value = "content", required = false) String content){
+        todoService.createNewTodo(user, content);
+        return "redirect:/main";
     }
 
     @GetMapping("/login")
