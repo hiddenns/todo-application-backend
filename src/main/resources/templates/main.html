@@ -14,7 +14,7 @@
             <input type="submit" value="Sign Out"/>
         </form>
 
-        <p th:text="'Hello, ' + ${name} + '!'" \>
+<!--`        <p th:text="'Hello, ' + ${todos[1].todo.user.username} + '!'" \>`-->
 
         <form th:action="@{/todo}" method="post">
             <input th:name="content" type="text" value="" placeholder="Add new todo">
@@ -37,7 +37,7 @@
             <tr th:each="todo : ${todos}">
                 <td><span th:text="${todo.content}"> Content </span></td>
                 <td><span th:text="${todo.completed}"> Completed </span></td>
-<!--                <td><span th:text="${todo.user.username}"> Completed </span></td>-->
+                <td><span th:text="${todo.user.username}"> Completed </span></td>
             </tr>
             </tbody>
 

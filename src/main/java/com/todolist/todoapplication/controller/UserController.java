@@ -48,7 +48,6 @@ public class UserController {
         User user = userRepository.findById(userId).orElseThrow(() -> new NoSuchElementException());
         Todo todo = new Todo();
         todo.setContent(todoRequest.getContent());
-        //user.getTodoList().add(todo);
         todoRepository.save(todo);
         userRepository.save(user);
     }

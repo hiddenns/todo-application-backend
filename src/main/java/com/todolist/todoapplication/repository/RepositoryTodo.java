@@ -78,16 +78,11 @@ public class RepositoryTodo {
     }
 
     public void saveUser(User user) {
-        System.out.println("rep: user save");
         userRepository.save(user);
     }
 
     public List<Todo> findTodosByUser(User user) {
         List<Todo> list = todoItemsRepository.findTodosByUserId(user.getId());
-        System.out.println("rep: user id = " + user.getId());
-        list.stream().forEach(todo -> {
-            System.out.println("rep: " + todo.getContent());
-        });
        return list;
     }
 }

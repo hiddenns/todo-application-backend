@@ -50,7 +50,6 @@ public class MainService {
     }
 
     public void saveUser(User user) {
-        System.out.println("service: user save");
         repositoryTodo.saveUser(user);
     }
 
