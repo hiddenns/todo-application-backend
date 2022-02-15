@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@CrossOrigin(origins = "https://todo-application-frontend.herokuapp.com")
+//@CrossOrigin(origins = "https://todo-application-frontend.herokuapp.com")
 public class MainController {
 
     @Autowired

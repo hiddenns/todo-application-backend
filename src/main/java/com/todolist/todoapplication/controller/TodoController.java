@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@CrossOrigin(origins = "https://todo-application-frontend.herokuapp.com")
+@CrossOrigin(origins = "http://localhost:3000")
 public class TodoController{
 
     @Autowired
