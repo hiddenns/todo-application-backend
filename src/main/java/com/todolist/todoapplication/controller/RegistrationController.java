@@ -35,10 +35,5 @@ public class RegistrationController {
         return "redirect:/login";
     }
 
-    @GetMapping("/test")
-    public String test(@AuthenticationPrincipal User user){
-        System.out.println(user.getUsername() + " " + user.getId());
-        return "main";
-    }
 
 }

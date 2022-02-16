@@ -1,9 +1,6 @@
 package com.todolist.todoapplication.entity;
 
-import com.todolist.todoapplication.service.UserService;
 import lombok.Data;
-import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
 
 @Data

@@ -20,12 +20,6 @@ public class MainController {
     @Autowired
     private MainService todoService;
 
-//    @GetMapping("/main")
-//    public String main(@RequestParam(name = "name", required = false, defaultValue = "default") String name, Map<String, Object> model){
-//        model.put("name", name);
-//        return "main";
-//    }
-
     @GetMapping("/main")
     public String showAll(@AuthenticationPrincipal User user, Model model) {
         List<Todo> todoList = todoService.fetchTodosByUser(user);

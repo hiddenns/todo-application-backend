@@ -1,7 +1,6 @@
 package com.todolist.todoapplication.repository;
 
 import com.todolist.todoapplication.entity.Todo;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -17,5 +16,6 @@ public interface TodoRepository extends CrudRepository<Todo, Long> {
     void updateTodoInfoById(String content, Boolean completed, Long id);
 
     List<Todo> findTodosByUserId(Long id);
+    Todo findTodoById(Long id);
 
 }

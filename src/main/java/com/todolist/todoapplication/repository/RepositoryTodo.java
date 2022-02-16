@@ -18,14 +18,12 @@ public class RepositoryTodo {
 
     public List<Todo> fetchAllTodoItems(){
         Iterable<Todo> todoIterable = todoItemsRepository.findAll();
-        //Iterator<Todo> todoIterator = todoIterable.iterator();
         List<Todo> todoList = new ArrayList<>();
         todoIterable.forEach(todoList::add);
         return todoList;
     }
 
-    public List<User> fetchAllUsers() {
-        //return userRepository.findAll();
+    public List<User> fetchAllUsers() { ////// ???
         List<User> userList = new ArrayList<>();
         User user1 = new User();
         user1.setUsername("Nikita");
@@ -41,6 +39,10 @@ public class RepositoryTodo {
         return userList;
     }
 
+    public Todo getTodoById(Long id){
+        return todoItemsRepository.findTodoById(id);
+    }
+
     public void updateTodo(Long id, Todo todoItemContent) {
         todoItemsRepository.updateTodoInfoById(todoItemContent.getContent(), todoItemContent.getCompleted(), id);
     }
@@ -50,10 +52,6 @@ public class RepositoryTodo {
     }
 
     public void deleteTodo(Long id) {
-//        Optional<Todo> optionalTodo = todoItemsRepository.findAll().
-//                .stream()
-//                .filter((item) -> item.getId().equals(id)).
-//                findAny();
         Iterable<Todo> todoIterable = todoItemsRepository.findAll();
 
         for (Todo todo: todoIterable) {
@@ -62,14 +60,6 @@ public class RepositoryTodo {
                 break;
             }
         }
-
-//        if (optionalTodo.isPresent()) {
-//            Todo todo = optionalTodo.get();
-//            todoItemsRepository.delete(todo);
-//        } else {
-//            throw new NoSuchElementException("todo not found!");
-//        }
-
 
     }
 
@@ -83,6 +73,14 @@ public class RepositoryTodo {
 
     public List<Todo> findTodosByUser(User user) {
         List<Todo> list = todoItemsRepository.findTodosByUserId(user.getId());
-       return list;
+        return list;
+    }
+
+    public void saveTodo(Todo todo) {
+        todoItemsRepository.save(todo);
+    }
+
+    public User getUserById(Long userId) {
+        return userRepository.findById(userId).orElseThrow(() -> new NoSuchElementException());
     }
 }

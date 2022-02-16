@@ -1,16 +1,13 @@
 package com.todolist.todoapplication.request;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
 public class AddUserRequest {
     private String username;
     private String password;
-
-    public AddUserRequest() {
-    }
-
-    public AddUserRequest(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
 
     public String getUsername() {
         return username;

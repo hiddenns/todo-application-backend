@@ -1,11 +1,14 @@
 package com.todolist.todoapplication.controller;
 
+import com.todolist.todoapplication.dto.UserDTO;
 import com.todolist.todoapplication.entity.Todo;
 import com.todolist.todoapplication.entity.User;
 import com.todolist.todoapplication.repository.TodoRepository;
 import com.todolist.todoapplication.repository.UserRepository;
 import com.todolist.todoapplication.request.AddTodoRequest;
 import com.todolist.todoapplication.request.AddUserRequest;
+import com.todolist.todoapplication.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,63 +17,52 @@ import java.util.NoSuchElementException;
 
 @RestController
 @CrossOrigin(origins = "https://todo-application-frontend.herokuapp.com")
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController {
-    private UserRepository userRepository;
-    private TodoRepository todoRepository;
+//    private UserRepository userRepository;
+//    private TodoRepository todoRepository;
 
-    public UserController(UserRepository userRepository, TodoRepository todoRepository) {
-        this.userRepository = userRepository;
-        this.todoRepository = todoRepository;
-    }
+    @Autowired
+    private UserService userService;
 
-//    @GetMapping("/api/users")
-//    public ResponseEntity<?> fetchAllUsers(){ /////// ???????
-//        List<User> userList = todoService.fetchAllUsers();
-//        return ResponseEntity.ok(userList);
-//    }
 
     @GetMapping("/{userId}")
-    public User getUserById(@PathVariable Long userId){
-        return userRepository.findById(userId).orElseThrow(() -> new NoSuchElementException());
+    public UserDTO getUserById(@PathVariable Long userId){
+        return userService.getUserById(userId);
     }
 
-    @PostMapping("/user")
-    public User addUser(@RequestBody AddUserRequest userRequest){
+    @PostMapping("/")
+    public UserDTO addUser(@RequestBody AddUserRequest userRequest){
         User user = new User();
         user.setUsername(userRequest.getUsername());
         user.setPassword(userRequest.getPassword());
-        return userRepository.save(user);
+        UserDTO userDTO = userService.createUser(user);
+
+        return userDTO;
     }
 
-    @PostMapping("/{userId}/todos")
-    public void addTodo(@PathVariable Long userId, @RequestBody AddTodoRequest todoRequest){
-        User user = userRepository.findById(userId).orElseThrow(() -> new NoSuchElementException());
-        Todo todo = new Todo();
-        todo.setContent(todoRequest.getContent());
-        todoRepository.save(todo);
-        userRepository.save(user);
-    }
+//    @PostMapping("/{userId}/todos")
+//    public void addTodo(@PathVariable Long userId, @RequestBody AddTodoRequest todoRequest) {
+//        User user = userRepository.findById(userId).orElseThrow(() -> new NoSuchElementException());
+//        Todo todo = new Todo();
+//        todo.setContent(todoRequest.getContent());
+//        todoRepository.save(todo);
+//        userRepository.save(user);
+//    }
 
-    @PostMapping("/todos/{todoId}")
-    public void toggleTodoCompleted(@PathVariable Long todoId){
-        Todo todo = todoRepository.findById(todoId).orElseThrow(() -> new NoSuchElementException());
-        todo.setCompleted(!todo.getCompleted());
-        todoRepository.save(todo);
-    }
 
-    @DeleteMapping("/{userId}/todos/{todoId}")
-    public void deleteTodo(@PathVariable Long userId ,@PathVariable Long todoId){
-        Todo todo = todoRepository.findById(todoId).orElseThrow(() -> new NoSuchElementException());
-        User user = userRepository.findById(userId).orElseThrow(() -> new NoSuchElementException());
-        //user.getTodoList().remove(todo);
-        todoRepository.delete(todo);
-    }
+//    @DeleteMapping("/{userId}/todos/{todoId}")
+//    public void deleteTodo(@PathVariable Long userId ,@PathVariable Long todoId) {
+//        Todo todo = todoRepository.findById(todoId).orElseThrow(() -> new NoSuchElementException());
+//        User user = userRepository.findById(userId).orElseThrow(() -> new NoSuchElementException());
+//        todoRepository.delete(todo);
+//    }
 
-    @DeleteMapping("/{userId}")
-    public void deleteUser(@PathVariable Long userId){
-        User user = userRepository.findById(userId).orElseThrow(() -> new NoSuchElementException());
-        userRepository.delete(user);
-    }
+//    @DeleteMapping("/{userId}")
+//    public void deleteUser(@PathVariable Long userId) {
+//        User user = userRepository.findById(userId).orElseThrow(() -> new NoSuchElementException());
+//        userRepository.delete(user);
+//    }
+
 
 }
