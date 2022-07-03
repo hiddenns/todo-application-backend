@@ -6,14 +6,17 @@
   --red:  #b8100a;
   --orange: #ed7116;
   --yellow: #fabd04;
+  --violet-light: #6d44b8;
+  --violet-dark: #573b8a;
+  --gradient: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(109,68,184,1) 100%);
 
   --color-text: var(--white);
-  --color-bg: var(--charcoal);
+  --color-bg: var(--gradient);
   --color-bg-input: var(--black);
   --color-checked: var(--green);
   --color-delete: var(--red);
-  --color-accent: var(--orange);
-  --color-accent-hover: var(--yellow);
+  --color-accent: var(--violet-dark);
+  --color-accent-hover: var(--violet-light);
 
   --line-height: 1.5;
   --font-family: sans-serif;
@@ -33,7 +36,7 @@ html {
   font-size: 100%;
   font-family: var(--font-family);
   color: var(--color-text);
-  background-color: var(--color-bg);
+  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
   line-height: var(--line-height);
 }
 
@@ -43,13 +46,46 @@ body {
 
 #defs {display: none;}
 
+header{
+}
+
+.header {
+  padding: 2rem 1rem 0.5rem;
+  text-align: center;
+  border-bottom: 2px solid currentColor;
+}
+
+.header-right {
+   font-size: 16px;
+   margin-top: 10px;
+   display: flex;
+   margin-left: auto;
+   margin-right: 0;
+   width: 10%;
+
+}
+
+.label-todo {
+}
+
+.header-top {
+  display: flex;
+}
+
+.header-user_lbl {
+    color: white;
+    text-align: 5px;
+}
+
+
 .button {
   border: 0;
+  border-radius: 5px;
   outline: 0;
   cursor: pointer;
   height: var(--height);
   width: var(--height);
-  background-color: var(--color-accent);
+  background: var(--color-accent);
   transition: background-color 150ms linear,
               color 150ms linear;
 }
@@ -78,36 +114,14 @@ body {
     width: 20%;
 }
 
-.btn-logout{
+.btn-logout {
     width: 24%;
     height: 25px;
-    background-color: var(--orange);
+    background-color: var(--color-accent);
     cursor: pointer;
     margin-left: 5%;
     margin-top: 5%;
     padding: 3px;
-}
-
-.header {
-  padding: 2rem 1rem 0.5rem;
-  text-align: center;
-  border-bottom: 2px solid currentColor;
-}
-
-.label-todo {
-}
-
-.header-right {
-  padding: 2rem 1rem 0.5rem;
-  top: 0;
-  margin-left: auto;
-  margin-right: 0;
-  width: 20%;
-  border-bottom: 2px solid currentColor;
-}
-
-.header-username {
-  text-align: right;
 }
 
 .main {
@@ -120,9 +134,9 @@ body {
 .todo-form {
   display: grid;
   grid-template-columns: 1fr auto auto;
-  align-items: center;
   gap: 0.25em;
   font-size: var(--font-size);
+  margin: 0.2em auto;
 }
 
 .todo-input {
@@ -141,7 +155,7 @@ body {
 }
 
 .btn_delete {
-    margin-bottom: 0;
+    display: flex;
 }
 
 .todo-input:hover {
@@ -174,6 +188,10 @@ body {
 
 }
 
+input, p {
+    border-radius: 5px;
+}
+
 input[type="radio"] {
     position: absolute;
     left: 0;
@@ -189,6 +207,10 @@ input[type=radio]:checked + .radio-label {
   opacity: 1;
 }
 
+.main {
+    background-color: rgb(0,0,0,0.3);
+    border-radius: 3px;
+}
 
 .todo-item {
   font-size: var(--font-size);
@@ -229,3 +251,4 @@ input[type=radio]:checked + .radio-label {
   text-decoration: line-through;
   opacity: 0.7;
 }
+

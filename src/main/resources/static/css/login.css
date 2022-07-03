@@ -49,6 +49,7 @@ input{
 	outline: none;
 	border-radius: 5px;
 }
+
 button{
 	width: 60%;
 	height: 40px;
@@ -66,6 +67,7 @@ button{
 	transition: .2s ease-in;
 	cursor: pointer;
 }
+
 button:hover{
 	background: #6d44b8;
 }
@@ -85,7 +87,7 @@ button:hover{
 .error-login{
     margin-top: 30px;
     text-align: center;
-    color: red;
+    color: #b8100a;
 }
 
 #chk:checked ~ .signup{

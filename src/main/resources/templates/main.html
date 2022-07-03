@@ -13,25 +13,28 @@
 
 <body>
 
-<div class="logout">
-    <form th:action="@{/logout}" method="post">
-        <button class="btn-logout button" type="submit" value="Sign Out">
-            <i class="fa-solid fa-right-from-bracket fa-flip-horizontal"></i>
-            <span>Logout</span>
-        </button>
-    </form>
-</div>
+<header>
+    <div class="header-top">
+        <div class="logout">
+            <form th:action="@{/logout}" method="post">
+                <button class="btn-logout button" type="submit" value="Sign Out">
+                    <i class="fa-solid fa-right-from-bracket fa-flip-horizontal"></i>
+                    <span>Logout</span>
+                </button>
+            </form>
+        </div>
+        <div class="header-right">
+            <p class="header-user_lbl">User: [[${username}]]</p>
+        </div>
+    </div>
 
-<!--<div class="header-right">-->
-<!--    <p class="header-username">[[${username}]]</p>-->
-<!--</div>-->
-
-<header class="header">
-    <h1>Todo List</h1>
+    <div class="header">
+        <h1>Todo List</h1>
+    </div>
 </header>
 <main class="main">
     <form class="todo-form" th:action="@{/todo}" method="post">
-        <input type="text" th:name="content" id="todo-input" class="todo-input"/>
+        <input type="text" th:name="content" id="todo-input" class="todo-input" required/>
         <button id="todo-submit" class="button todo-submit" type="submit" aria-label="add">
             <i class="fa-solid fa-plus fa-xl"></i>
         </button>
@@ -56,12 +59,13 @@
             <div th:each="todo : ${todos}">
                 <div class="todo-form">
                     <form class="form-content" th:action="@{/api/todo/toggle/{id} (id=${todo.id})}" method="post">
-                         <div th:switch="${todo.completed}">
+                        <div th:switch="${todo.completed}">
 
                             <div class="todo" th:case="${true}">
                                 <p th:inline='text' style="text-decoration: line-through; opacity: 0.4;"
                                    th:value="${todo.content}"
-                                   class="todo-content" name="content" field="*{content}" tabindex="0">[[${todo.content}]]</p>
+                                   class="todo-content" name="content" field="*{content}" tabindex="0">
+                                    [[${todo.content}]]</p>
                                 <button class="button todo-completed" aria-label="mark complete">
                                     <i class="fa-solid fa-xmark fa-xl"></i>
                                 </button>
@@ -69,7 +73,8 @@
 
                             <div class="todo" th:case="*">
                                 <p th:inline='text'
-                                    th:value="${todo.content}" class="todo-content" name="content" field="*{content}" tabindex="0">[[${todo.content}]]</p>
+                                   th:value="${todo.content}" class="todo-content" name="content" field="*{content}"
+                                   tabindex="0">[[${todo.content}]]</p>
 
                                 <button class="button todo-completed" aria-label="mark complete">
                                     <i class="fa-solid fa-check fa-xl"></i>
@@ -78,7 +83,8 @@
                         </div>
                     </form>
 
-                    <form class="btn_delete" th:action="@{/api/todo/delete/{id} (id=${todo.id})}" method="post">
+                    <form class="btn_delete form-content" th:action="@{/api/todo/delete/{id} (id=${todo.id})}"
+                          method="post">
                         <button class="button todo-delete" aria-label="mark complete">
                             <i class="fa-solid fa-trash-can fa-xl"></i>
                         </button>
