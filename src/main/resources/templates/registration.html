@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Sign up</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="login-wrap py-5">
+                    <h3 class="text-center mb-0">Sign up</h3>
+                    <p class="text-center">Sign up by entering the information below</p>
+
+                    <form th:action="@{/registration}" method="post" class="login-form">
+                        <div class="form-group">
+                            <div class="icon d-flex align-items-center justify-content-center"><span
+                                    class="fa fa-user"></span></div>
+                            <input type="text" name="username" class="form-control" placeholder="Username" required>
+                        </div>
+                        <div class="form-group">
+                            <div class="icon d-flex align-items-center justify-content-center"><span
+                                    class="fa fa-lock"></span></div>
+                            <input type="password" name="password" class="form-control" placeholder="Password" required>
+                        </div>
+                        <div class="form-group d-md-flex">
+                            <div class="w-100 text-md-right">
+                                <a href="/login">Sign in</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn form-control btn-primary rounded submit px-3"
+                                   value="Sing up"/>
+                        </div>
+
+                        <div class="error-login">
+                            <div th:if="${param.error}">
+                                Error.
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,231 @@
+:root {
+  --black:#111;
+  --charcoal: #222023;
+  --white: #fffefc;
+  --green: #2ecc40;
+  --red:  #b8100a;
+  --orange: #ed7116;
+  --yellow: #fabd04;
+
+  --color-text: var(--white);
+  --color-bg: var(--charcoal);
+  --color-bg-input: var(--black);
+  --color-checked: var(--green);
+  --color-delete: var(--red);
+  --color-accent: var(--orange);
+  --color-accent-hover: var(--yellow);
+
+  --line-height: 1.5;
+  --font-family: sans-serif;
+  --font-size: clamp(1rem, 3vw, 1.5rem);
+  --height: calc(var(--line-height) * var(--font-size));
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+  color: inherit;
+}
+
+html {
+  font-size: 100%;
+  font-family: var(--font-family);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: var(--line-height);
+}
+
+body {
+    min-height: 100vh;
+}
+
+#defs {display: none;}
+
+.button {
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  height: var(--height);
+  width: var(--height);
+  background-color: var(--color-accent);
+  transition: background-color 150ms linear,
+              color 150ms linear;
+}
+
+.button:hover {
+  background-color: var(--color-accent-hover);
+  color: var(--color-bg);
+}
+
+.button:focus {
+  background-color: var(--color-accent-hover);
+  color: var(--color-bg);
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  pointer-events: none;
+  padding: 0.25em;
+}
+
+.logout {
+    width: 20%;
+}
+
+.btn-logout{
+    width: 24%;
+    height: 25px;
+    background-color: var(--orange);
+    cursor: pointer;
+    margin-left: 5%;
+    margin-top: 5%;
+    padding: 3px;
+}
+
+.header {
+  padding: 2rem 1rem 0.5rem;
+  text-align: center;
+  border-bottom: 2px solid currentColor;
+}
+
+.label-todo {
+}
+
+.header-right {
+  padding: 2rem 1rem 0.5rem;
+  top: 0;
+  margin-left: auto;
+  margin-right: 0;
+  width: 20%;
+  border-bottom: 2px solid currentColor;
+}
+
+.header-username {
+  text-align: right;
+}
+
+.main {
+  padding: 1rem;
+  margin: 0 auto;
+  width: 65ch;
+  max-width: 100%;
+}
+
+.todo-form {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 0.25em;
+  font-size: var(--font-size);
+}
+
+.todo-input {
+  background-color: var(--color-bg-input);
+  border: 0;
+  outline: 2px solid transparent;
+  font-size: var(--font-size);
+  padding: 0.5em 1em;
+  height: var(--height);
+  transition: outline 150ms linear;
+  margin-bottom: 20px;
+}
+
+.todo {
+    display: flex;
+}
+
+.btn_delete {
+    margin-bottom: 0;
+}
+
+.todo-input:hover {
+  outline-color: var(--color-accent-hover);
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 1em;
+  gap: 1em;
+  font-size: var(--font-size);
+}
+
+.radio-option {
+  position: relative;
+  flex: 1;
+  text-align: center;
+}
+
+.radio-label {
+  font-size: inherit;
+  display: block;
+  width: 100%;
+  padding: 0 0.5em;
+  box-shadow: inset 0 -0.25em var(--color-accent);
+  opacity: 0.4;
+  transition: all 150ms linear;
+  
+}
+
+input[type="radio"] {
+    position: absolute;
+    left: 0;  
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+input[type=radio]:hover + .radio-label,
+input[type=radio]:focus + .radio-label,
+input[type=radio]:checked + .radio-label {
+  opacity: 1;
+}
+
+
+.todo-item {
+  font-size: var(--font-size);
+  display: grid;
+  grid-template-columns: 1fr min-content min-content;
+  gap: 0.25em;
+  align-items: center;
+  margin-bottom: 0.25em;
+  transition: all 200ms ease;
+  transform: translateY(0);
+  transform-origin: bottom left;
+}
+    
+.todo-content {
+  background-color: var(--color-bg-input);
+  line-height: calc(var(--height) - 0.5em);
+  font-size: inherit;
+  padding: 0.25em 1em;
+  flex: 1;
+  transition: text-decoration 150ms linear, opacity 150ms linear;
+}
+
+.todo-completed {
+    background-color: var(--color-checked);
+}
+
+.todo-delete {
+    background-color: var(--color-delete);
+}
+
+.rotate-fade {
+  transition: text-decoration 150ms linear, opacity 150ms linear;
+  transform: rotate(30deg) translateY(2em);
+  opacity: 0;
+}
+
+.completed .todo-content {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
