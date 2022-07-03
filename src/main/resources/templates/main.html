@@ -13,24 +13,6 @@
 
 <body>
 
-<svg id="defs" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-        <symbol class="icon icon-checked" id="icon-checked" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <polyline points="20 6 9 17 4 12"></polyline>
-        </symbol>
-        <symbol class="icon icon-delete" id="icon-delete" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <polyline points="3 6 5 6 21 6"></polyline>
-            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-            <line x1="10" y1="11" x2="10" y2="17"></line>
-            <line x1="14" y1="11" x2="14" y2="17"></line>
-        </symbol>
-        <symbol class="icon icon-add" id="icon-add" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-        </symbol>
-    </defs>
-</svg>
-
 <div class="logout">
     <form th:action="@{/logout}" method="post">
         <button class="btn-logout button" type="submit" value="Sign Out">
@@ -51,9 +33,7 @@
     <form class="todo-form" th:action="@{/todo}" method="post">
         <input type="text" th:name="content" id="todo-input" class="todo-input"/>
         <button id="todo-submit" class="button todo-submit" type="submit" aria-label="add">
-            <svg class="icon">
-                <use xlink:href="#icon-add"/>
-            </svg>
+            <i class="fa-solid fa-plus fa-xl"></i>
         </button>
     </form>
     <section class="todos">
