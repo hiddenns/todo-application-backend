@@ -136,7 +136,7 @@ header{
   grid-template-columns: 1fr auto auto;
   gap: 0.25em;
   font-size: var(--font-size);
-  margin: 0.2em auto;
+  margin-bottom: 0.2em;
 }
 
 .todo-input {
@@ -148,10 +148,6 @@ header{
   height: var(--height);
   transition: outline 150ms linear;
   margin-bottom: 20px;
-}
-
-.todo {
-    display: flex;
 }
 
 .btn_delete {
@@ -213,6 +209,7 @@ input[type=radio]:checked + .radio-label {
 }
 
 .todo-item {
+  display: flex;
   font-size: var(--font-size);
   display: grid;
   grid-template-columns: 1fr min-content min-content;

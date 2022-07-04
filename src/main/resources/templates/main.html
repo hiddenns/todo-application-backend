@@ -57,12 +57,11 @@
 
         <div class="todo-list" id="todo-list">
             <div th:each="todo : ${todos}">
-                <div class="todo-form">
+                <div class="todo-form" id="todo-form">
                     <form class="form-content" th:action="@{/api/todo/toggle/{id} (id=${todo.id})}" method="post">
                         <div th:switch="${todo.completed}">
-
-                            <div class="todo" th:case="${true}">
-                                <p th:inline='text' style="text-decoration: line-through; opacity: 0.4;"
+                            <div class="todo-item completed" th:case="${true}">
+                                <p th:inline='text'
                                    th:value="${todo.content}"
                                    class="todo-content" name="content" field="*{content}" tabindex="0">
                                     [[${todo.content}]]</p>
@@ -71,7 +70,7 @@
                                 </button>
                             </div>
 
-                            <div class="todo" th:case="*">
+                            <div class="todo-item" th:case="*">
                                 <p th:inline='text'
                                    th:value="${todo.content}" class="todo-content" name="content" field="*{content}"
                                    tabindex="0">[[${todo.content}]]</p>
@@ -89,6 +88,7 @@
                             <i class="fa-solid fa-trash-can fa-xl"></i>
                         </button>
                     </form>
+
 
                 </div>
             </div>
