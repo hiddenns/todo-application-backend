@@ -35,17 +35,21 @@ function filterTodos() {
 
   switch (value) {
     case "all":
-      todoListItems.forEach((item) => (item.style.display = "grid"));
+      todoListItems.forEach((item) => {
+        item.style.display = "grid";
+        item.parentNode.parentNode.parentNode.style.display = "grid";
+      });
       break;
     case "completed":
       todoListItems.forEach((item) => {
         if (!item.classList.contains("completed")) {
           item.style.display = "none";
-          let items = item.parentNode.parentNode.parentNode;
-          items.getElementsByClassName("btn_delete")[0].style.display = "none";
+          item.parentNode.parentNode.parentNode.style.display = "none";
+          // item.parentNode.parentNode.parentNode.getElementsByClassName("btn_delete")[0].style.display = "none";
         } else {
           item.style.display = "grid";
-          item.parentNode.parentNode.parentNode.getElementsByClassName("btn_delete")[0].style.display = "grid";
+          // item.parentNode.parentNode.parentNode.getElementsByClassName("btn_delete")[0].style.display = "grid";
+          item.parentNode.parentNode.parentNode.style.display = "grid";
         }
       }
       );
@@ -55,12 +59,10 @@ function filterTodos() {
         todoListItems.forEach((item) => {
           if (item.classList.contains("completed")) {
             item.style.display = "none";
-            let items = item.parentNode.parentNode.parentNode;
-            items.getElementsByClassName("btn_delete")[0].style.display = "none";
-
+            item.parentNode.parentNode.parentNode.style.display = "none";
           } else {
             item.style.display = "grid";
-            item.parentNode.parentNode.parentNode.getElementsByClassName("btn_delete")[0].style.display = "grid";
+            item.parentNode.parentNode.parentNode.style.display = "grid";
           }
         }
         ));
