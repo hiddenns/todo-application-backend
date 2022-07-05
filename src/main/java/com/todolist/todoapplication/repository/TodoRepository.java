@@ -8,14 +8,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public interface TodoRepository extends CrudRepository<Todo, Long> {
+public interface TodoRepository extends CrudRepository<Todo, String> {
 
     @Transactional
     @Modifying
     @Query("update Todo t set t.content = ?1, t.completed = ?2 where t.id = ?3")
-    void updateTodoInfoById(String content, Boolean completed, Long id);
+    void updateTodoInfoById(String content, Boolean completed, String id);
 
-    List<Todo> findTodosByUserId(Long id);
-    Todo findTodoById(Long id);
+    List<Todo> findTodosByUserId(String id);
+    Todo findTodoById(String id);
 
 }

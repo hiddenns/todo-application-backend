@@ -18,15 +18,15 @@ public class TodoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TodoApplication.class, args);
 	}
-
-	@Bean
-	public CommandLineRunner dataLoader(UserRepository userRepository) {
-		return new CommandLineRunner() {
-			@Override
-			public void run(String... args) throws Exception {
-				userRepository.save(new User("1","1"));
-			}
-		};
-	}
+//
+//	@Bean
+//	public CommandLineRunner dataLoader(UserRepository userRepository) {
+//		return new CommandLineRunner() {
+//			@Override
+//			public void run(String... args) throws Exception {
+//				userRepository.save(new User("1","1"));
+//			}
+//		};
+//	}
 
 }

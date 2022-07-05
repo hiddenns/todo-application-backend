@@ -42,7 +42,7 @@ public class UserService implements UserDetailsService {
         return userToUserDTO(user);
     }
 
-    public UserDTO getUserById(Long userId) {
+    public UserDTO getUserById(String userId) {
         return userToUserDTO(repositoryTodo.getUserById(userId));
     }
 

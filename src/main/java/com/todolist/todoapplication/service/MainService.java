@@ -17,17 +17,17 @@ public class MainService {
         return repositoryTodo.fetchAllTodoItems();
     }
 
-    public Todo updateTodo(Long id, Todo todo) {
+    public Todo updateTodo(String id, Todo todo) {
         repositoryTodo.updateTodo(id, todo);
         return todo;
     }
 
-    public Todo createNewTodo(String content) { // delete
-        Todo todo = new Todo();
-        todo.setContent(content);
-        repositoryTodo.createNewTodo(todo);
-        return todo;
-    }
+//    public Todo createNewTodo(String content) { // delete
+//        Todo todo = new Todo();
+//        todo.setContent(content);
+//        repositoryTodo.createNewTodo(todo);
+//        return todo;
+//    }
 
     public Todo createNewTodo(User user, String content) {
         Todo todo = new Todo();
@@ -37,7 +37,7 @@ public class MainService {
         return todo;
     }
 
-    public void deleteTodo(Long id) {
+    public void deleteTodo(String id) {
         repositoryTodo.deleteTodo(id);
     }
 
@@ -53,7 +53,7 @@ public class MainService {
         return repositoryTodo.findTodosByUser(user);
     }
 
-    public void toggleTodoCompleted(Long todoId) {
+    public void toggleTodoCompleted(String todoId) {
         Todo todo = repositoryTodo.getTodoById(todoId);
         //Todo todo = todoRepository.findById(todoId).orElseThrow(() -> new NoSuchElementException());
         todo.setCompleted(!todo.getCompleted());

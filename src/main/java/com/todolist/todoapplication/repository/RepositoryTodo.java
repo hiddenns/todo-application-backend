@@ -39,11 +39,11 @@ public class RepositoryTodo {
         return userList;
     }
 
-    public Todo getTodoById(Long id){
+    public Todo getTodoById(String id){
         return todoItemsRepository.findTodoById(id);
     }
 
-    public void updateTodo(Long id, Todo todoItemContent) {
+    public void updateTodo(String id, Todo todoItemContent) {
         todoItemsRepository.updateTodoInfoById(todoItemContent.getContent(), todoItemContent.getCompleted(), id);
     }
 
@@ -51,7 +51,7 @@ public class RepositoryTodo {
         todoItemsRepository.save(todo);
     }
 
-    public void deleteTodo(Long id) {
+    public void deleteTodo(String id) {
         Iterable<Todo> todoIterable = todoItemsRepository.findAll();
 
         for (Todo todo: todoIterable) {
@@ -80,7 +80,7 @@ public class RepositoryTodo {
         todoItemsRepository.save(todo);
     }
 
-    public User getUserById(Long userId) {
+    public User getUserById(String userId) {
         return userRepository.findById(userId).orElseThrow(() -> new NoSuchElementException());
     }
 }

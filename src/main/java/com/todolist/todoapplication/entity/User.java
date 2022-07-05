@@ -3,26 +3,38 @@ package com.todolist.todoapplication.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @Entity
 @Table(name="usr")
 @AllArgsConstructor
-@NoArgsConstructor
 public class User implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(generator = "prod-generator")
+    @GenericGenerator(name = "prod-generator",
+            parameters = @org.hibernate.annotations.Parameter(name = "prefix", value = "prod"),
+            strategy = "com.todolist.todoapplication.model.ImeiIdGenerator")
+    private String id;
 
     private String username;
     private String password;
+    private String email;
+
+//    private LocalDateTime lastVisit;
+
+
+    public User() {
+    }
 
     public User(String username, String password) {
         this.username = username;
@@ -54,4 +66,8 @@ public class User implements UserDetails {
         return null;
     }
 
+    @PrePersist
+    private void ensureId(){
+        this.setId(UUID.randomUUID().toString());
+    }
 }

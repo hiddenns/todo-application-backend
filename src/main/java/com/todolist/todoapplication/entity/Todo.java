@@ -1,15 +1,25 @@
 package com.todolist.todoapplication.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
+import java.util.UUID;
 
 @Data
 @Entity
 @Table(name="todo")
+@AllArgsConstructor
 public class Todo {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(generator = "prod-generator")
+    @GenericGenerator(name = "prod-generator",
+            parameters = @org.hibernate.annotations.Parameter(name = "prefix", value = "prod"),
+            strategy = "com.todolist.todoapplication.model.ImeiIdGenerator")
+    private String id;
+
     private String content;
     private Boolean completed = Boolean.FALSE;
 
@@ -21,42 +31,4 @@ public class Todo {
         this.content = "TASK";
     }
 
-    public Todo(Long id, String content, Boolean completed, User user) {
-        this.id = id;
-        this.content = content;
-        this.completed = completed;
-        this.user = user;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Boolean getCompleted() {
-        return completed;
-    }
-
-    public void setCompleted(Boolean completed) {
-        this.completed = completed;
-    }
 }

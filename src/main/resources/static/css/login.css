@@ -99,3 +99,29 @@ button:hover{
 #chk:checked ~ .login label{
 	transform: scale(.6);
 }
+
+.fb-btn {
+  color: darken(#d3dae9, 20%);
+  display: block;
+  margin: 0 auto;
+  width: 46%;
+  height: $btnH;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+
+  span {
+    font-weight: bold;
+    color: darken(#768cb6, 20%);
+  }
+}
+
+.google-img {
+    width: 8%;
+    margin: 10px auto;
+}
+
+.google-lbl {
+
+}
