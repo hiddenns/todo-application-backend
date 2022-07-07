@@ -22,14 +22,13 @@ public class ImeiIdGenerator implements IdentifierGenerator, Configurable {
 
     @Override
     public void configure(Type type, Properties params, ServiceRegistry serviceRegistry) throws MappingException {
-        prefix = params.getProperty("prefix"); ////// ????
+        prefix = params.getProperty("prefix");
     }
 
     @Override
     public Serializable generate(
             SharedSessionContractImplementor sharedSessionContractImplementor, Object o)
             throws HibernateException {
-        System.out.println("imeiId gen");
         return prefix + UUID.randomUUID();
     }
 
