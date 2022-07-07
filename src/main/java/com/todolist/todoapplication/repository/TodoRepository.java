@@ -18,4 +18,5 @@ public interface TodoRepository extends CrudRepository<Todo, String> {
     List<Todo> findTodosByUserId(String id);
     Todo findTodoById(String id);
 
+    List<Todo> findTodosByUserEmail(String email);
 }

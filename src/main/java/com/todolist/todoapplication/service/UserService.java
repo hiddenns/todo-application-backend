@@ -50,4 +50,7 @@ public class UserService implements UserDetailsService {
         return new UserDTO(user.getId(), user.getUsername());
     }
 
+    public User getUserByEmail(String email) {
+        return repositoryTodo.getUserByEmail(email);
+    }
 }

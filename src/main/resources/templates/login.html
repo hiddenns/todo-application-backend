@@ -30,9 +30,11 @@
         </form>
 
         <div class="oauth2">
-            <button type="button" class="fb-btn">
-                <div class="google-lbl">Connect with Google</div>
-            </button>
+            <form th:action="@{/oauth2/authorization/google}" method="get">
+                <button type="submit" class="fb-btn">
+                    <div class="google-lbl">Connect with Google</div>
+                </button>
+            </form>
         </div>
 
     </div>

@@ -22,7 +22,7 @@ public class ImeiIdGenerator implements IdentifierGenerator, Configurable {
 
     @Override
     public void configure(Type type, Properties params, ServiceRegistry serviceRegistry) throws MappingException {
-        prefix = params.getProperty("prifix");
+        prefix = params.getProperty("prefix"); ////// ????
     }
 
     @Override

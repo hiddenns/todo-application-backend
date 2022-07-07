@@ -26,7 +26,7 @@ public class RegistrationController {
 
         if (userFromDb != null){
             model.put("message", "Username is exists!");
-            return "registration";
+            return "redirect:/login";
         }
 
         mainService.saveUser(user);

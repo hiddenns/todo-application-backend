@@ -1,11 +1,14 @@
 package com.todolist.todoapplication.entity;
 
+import com.todolist.todoapplication.model.AuthenticationProvider;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -15,20 +18,24 @@ import java.util.UUID;
 
 @Data
 @Entity
-@Table(name="usr")
+@Table(name = "usr")
 @AllArgsConstructor
 public class User implements UserDetails {
 
     @Id
     @GeneratedValue(generator = "prod-generator")
     @GenericGenerator(name = "prod-generator",
-            parameters = @org.hibernate.annotations.Parameter(name = "prefix", value = "prod"),
+            parameters = @org.hibernate.annotations.Parameter(name = "prefix", value = "user"),
             strategy = "com.todolist.todoapplication.model.ImeiIdGenerator")
     private String id;
 
     private String username;
     private String password;
+
     private String email;
+
+    @Enumerated(EnumType.STRING)
+    private AuthenticationProvider authProvider;
 
 //    private LocalDateTime lastVisit;
 
@@ -40,6 +47,7 @@ public class User implements UserDetails {
         this.username = username;
         this.password = password;
     }
+
 
     @Override
     public boolean isAccountNonExpired() {
@@ -66,8 +74,8 @@ public class User implements UserDetails {
         return null;
     }
 
-    @PrePersist
-    private void ensureId(){
-        this.setId(UUID.randomUUID().toString());
-    }
+//    @PrePersist
+//    private void ensureId() {
+//        this.setId(UUID.randomUUID().toString());
+//    }
 }

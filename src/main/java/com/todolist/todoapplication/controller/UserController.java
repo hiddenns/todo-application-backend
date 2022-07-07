@@ -28,15 +28,15 @@ public class UserController {
         return userService.getUserById(userId);
     }
 
-    @PostMapping("/")
-    public UserDTO addUser(@RequestBody AddUserRequest userRequest){
-        User user = new User();
-        user.setUsername(userRequest.getUsername());
-        user.setPassword(userRequest.getPassword());
-        UserDTO userDTO = userService.createUser(user);
-
-        return userDTO;
-    }
+//    @PostMapping("/")
+//    public UserDTO addUser(@RequestBody AddUserRequest userRequest){
+//        User user = new User();
+//        user.setUsername(userRequest.getUsername());
+//        user.setPassword(userRequest.getPassword());
+//        UserDTO userDTO = userService.createUser(user);
+//
+//        return userDTO;
+//    }
 
 //    @PostMapping("/{userId}/todos")
 //    public void addTodo(@PathVariable Long userId, @RequestBody AddTodoRequest todoRequest) {

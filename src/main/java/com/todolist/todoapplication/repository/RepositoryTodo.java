@@ -72,7 +72,7 @@ public class RepositoryTodo {
     }
 
     public List<Todo> findTodosByUser(User user) {
-        List<Todo> list = todoItemsRepository.findTodosByUserId(user.getId());
+        List<Todo> list = todoItemsRepository.findTodosByUserEmail(user.getEmail());
         return list;
     }
 
@@ -82,5 +82,9 @@ public class RepositoryTodo {
 
     public User getUserById(String userId) {
         return userRepository.findById(userId).orElseThrow(() -> new NoSuchElementException());
+    }
+
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 }
