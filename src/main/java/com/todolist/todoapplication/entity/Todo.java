@@ -1,13 +1,11 @@
 package com.todolist.todoapplication.entity;
 
-import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Data
 @Entity
@@ -18,7 +16,7 @@ public class Todo {
     @Id
     @GeneratedValue(generator = "prod-generator")
     @GenericGenerator(name = "prod-generator",
-            parameters = @org.hibernate.annotations.Parameter(name = "prefix", value = "prod"),
+            parameters = @org.hibernate.annotations.Parameter(name = "prefix", value = "todo"),
             strategy = "com.todolist.todoapplication.model.ImeiIdGenerator")
     private String id;
 

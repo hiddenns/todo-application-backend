@@ -8,6 +8,7 @@
 </head>
 
 <body>
+
 <div class="main">
     <input type="checkbox" id="chk" aria-hidden="true">
 
@@ -18,10 +19,19 @@
             <input type="password" name="password" placeholder="Password" required="">
             <button>Login</button>
 
+            <div class="forgot-pass" th:if="${param.error}">
+                <a class="lbl-forgot-pass underline" href="">Forgot password?</a>
+            </div>
+
             <div class="error-login">
                 <div th:if="${param.error}">
                     Invalid username and password.<br>
-                    <a href="">Forgot password?</a>
+                </div>
+                <div th:if="${param.logout}">
+                    You have been logged out.
+                </div>
+                <div th:if="${usernameExists}">
+                    Username is exists!
                 </div>
                 <div th:if="${param.logout}">
                     You have been logged out.
