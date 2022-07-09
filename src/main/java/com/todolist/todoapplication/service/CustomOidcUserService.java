@@ -12,6 +12,7 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Service;
 
+import javax.naming.AuthenticationException;
 import java.util.Optional;
 
 @Service
@@ -31,11 +32,14 @@ public class CustomOidcUserService extends OidcUserService {
         }
     }
 
-    private OidcUser processOidcUser(OidcUserRequest userRequest, OidcUser oidcUser) {
+    private OidcUser processOidcUser(OidcUserRequest userRequest, OidcUser oidcUser) throws AuthenticationException {
         GoogleUserInfo googleUserInfo = new GoogleUserInfo(oidcUser.getAttributes());
 
         String em = googleUserInfo.getEmail();
         String id = googleUserInfo.getId();
+
+        User userEmail = userRepository.findByEmail(em);
+
         Optional<User> userOptional = Optional.ofNullable(userRepository.findByEmail(em));
         if (!userOptional.isPresent()) {
             User user = new User();

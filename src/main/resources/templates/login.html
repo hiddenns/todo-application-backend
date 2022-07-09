@@ -31,12 +31,19 @@
                     You have been logged out.
                 </div>
                 <div th:if="${usernameExists}">
-                    Username is exists!
+                    [[${usernameExists}]]
+                </div>
+                <div th:if="${emailExists}">
+                    [[${emailExists}]]
                 </div>
                 <div th:if="${param.logout}">
                     You have been logged out.
                 </div>
+                <div class="registration-successful" th:if="${registrationSuccessful}">
+                    [[${registrationSuccessful}]]<br>
+                </div>
             </div>
+
         </form>
 
         <div class="oauth2">

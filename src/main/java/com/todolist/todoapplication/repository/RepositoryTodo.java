@@ -87,4 +87,8 @@ public class RepositoryTodo {
     public User getUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }
+
+    public User findUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 }

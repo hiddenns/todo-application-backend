@@ -161,3 +161,8 @@ button:hover{
     width: 100%;
   }
 }
+
+.registration-successful {
+    text-align: center;
+    color: lime;
+}

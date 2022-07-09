@@ -59,4 +59,8 @@ public class MainService {
         todo.setCompleted(!todo.getCompleted());
         repositoryTodo.saveTodo(todo);
     }
+
+    public User findUserByEmail(String email) {
+        return repositoryTodo.findUserByEmail(email);
+    }
 }

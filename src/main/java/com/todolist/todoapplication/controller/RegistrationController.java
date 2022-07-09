@@ -4,6 +4,7 @@ import com.todolist.todoapplication.entity.User;
 import com.todolist.todoapplication.model.AuthenticationProvider;
 import com.todolist.todoapplication.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,9 @@ public class RegistrationController {
     @Autowired
     private MainService mainService;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @GetMapping("/registration")
     public String registration() {
         return "registration";
@@ -25,19 +29,21 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String addUser(@Valid User user, Map<String, Object> model, BindingResult result) {
-        User userFromDb = mainService.findUserByUsername(user.getUsername());
 
-
-        if (userFromDb != null) {
+        if (mainService.findUserByUsername(user.getUsername()) != null ) {
             model.put("usernameExists", "Username is exists!");
-            System.out.println("Username is exists!");
-
-            return "login";
+            return "/login";
+        } else if (mainService.findUserByEmail(user.getEmail()) != null) {
+            model.put("emailExists", "Email is exists!");
+            return "/login";
         }
 
+        String password = user.getPassword();
+        user.setPassword(passwordEncoder.encode(password));
         user.setAuthProvider(AuthenticationProvider.LOCAL);
         mainService.saveUser(user);
-        return "redirect:/login";
+        model.put("registrationSuccessful", "Registration successful!");
+        return "/login";
     }
 
 
