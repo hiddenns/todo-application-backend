@@ -25,6 +25,12 @@ public class CustomOidcUserService extends OidcUserService {
     public OidcUser loadUser(OidcUserRequest userRequest) throws OAuth2AuthenticationException {
         OidcUser oidcUser = super.loadUser(userRequest);
 
+        User findableUser = userRepository.findByEmail(oidcUser.getEmail());
+
+        if (findableUser != null && findableUser.getAuthProvider() == AuthenticationProvider.LOCAL) {
+            throw new OAuth2AuthenticationException("Email is exists!");
+        }
+
         try {
             return processOidcUser(userRequest, oidcUser);
         } catch (Exception ex) {

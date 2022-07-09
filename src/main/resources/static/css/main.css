@@ -56,8 +56,7 @@ header{
 }
 
 .header-right {
-   font-size: 16px;
-   margin-top: 10px;
+   margin-top: 13px;
    display: flex;
    right: 0;
    margin-left: auto;
@@ -72,10 +71,10 @@ header{
 }
 
 .header-user_lbl {
+    font-size: calc(var(--font-size) - 0.5em);
     color: white;
     text-align: 5px;
 }
-
 
 .button {
   border: 0;
@@ -114,13 +113,14 @@ header{
 }
 
 .btn-logout {
-    width: 24%;
+    width: 30%;
     height: 25px;
     background-color: var(--color-accent);
     cursor: pointer;
     margin-left: 5%;
     margin-top: 5%;
     padding: 3px;
+    font-size: calc(var(--font-size) - 0.6em);
 }
 
 .main {
@@ -150,7 +150,7 @@ header{
 }
 
 .btn_delete {
-    display: flex;
+  display: flex;
 }
 
 .todo-input:hover {
@@ -180,7 +180,6 @@ header{
   box-shadow: inset 0 -0.25em var(--color-accent);
   opacity: 0.4;
   transition: all 150ms linear;
-
 }
 
 input, p {
@@ -230,11 +229,11 @@ input[type=radio]:checked + .radio-label {
 }
 
 .todo-completed {
-    background-color: var(--color-checked);
+  background-color: var(--color-checked);
 }
 
 .todo-delete {
-    background-color: var(--color-delete);
+  background-color: var(--color-delete);
 }
 
 .rotate-fade {

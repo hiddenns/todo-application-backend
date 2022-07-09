@@ -84,10 +84,12 @@ button:hover{
 	transform: scale(.6);
 }
 
-.error-login{
+.login-logs{
     margin-bottom: 3%;
     text-align: center;
     color: #b8100a;
+    font-size: 12px;
+    margin-top: 3%;
 }
 
 #chk:checked ~ .signup{
@@ -121,10 +123,6 @@ button:hover{
 .google-img {
     width: 8%;
     margin: 10px auto;
-}
-
-.error-login {
-    margin-top: 3%;
 }
 
 .forgot-pass{

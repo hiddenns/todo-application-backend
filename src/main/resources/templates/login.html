@@ -23,7 +23,7 @@
                 <a class="lbl-forgot-pass underline" href="">Forgot password?</a>
             </div>
 
-            <div class="error-login">
+            <div class="login-logs">
                 <div th:if="${param.error}">
                     Invalid username and password.<br>
                 </div>
@@ -38,6 +38,9 @@
                 </div>
                 <div th:if="${param.logout}">
                     You have been logged out.
+                </div>
+                <div th:if="${oAuth2Error}">
+                    [[${oAuth2Error}]]
                 </div>
                 <div class="registration-successful" th:if="${registrationSuccessful}">
                     [[${registrationSuccessful}]]<br>
