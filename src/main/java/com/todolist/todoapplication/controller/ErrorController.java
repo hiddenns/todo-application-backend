@@ -39,6 +39,6 @@ public class ErrorController implements org.springframework.boot.web.servlet.err
     public String errorAuthorisation(HttpServletRequest request, Model model){
         System.out.println("controller auth error!");
         model.addAttribute("oAuth2Error", "Error oAuth2! Change email or try again! :(");
-        return "/login";
+        return "login";
     }
 }

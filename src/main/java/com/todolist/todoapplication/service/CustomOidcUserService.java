@@ -44,8 +44,6 @@ public class CustomOidcUserService extends OidcUserService {
         String em = googleUserInfo.getEmail();
         String id = googleUserInfo.getId();
 
-        User userEmail = userRepository.findByEmail(em);
-
         Optional<User> userOptional = Optional.ofNullable(userRepository.findByEmail(em));
         if (!userOptional.isPresent()) {
             User user = new User();
