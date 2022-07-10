@@ -24,7 +24,7 @@ public class RegistrationController {
 
     @GetMapping("/registration")
     public String registration() {
-        return "registration";
+        return "redirect:/login";
     }
 
     @PostMapping("/registration")
@@ -32,10 +32,10 @@ public class RegistrationController {
 
         if (mainService.findUserByUsername(user.getUsername()) != null ) {
             model.put("usernameExists", "Username is exists!");
-            return "/login";
+            return "login";
         } else if (mainService.findUserByEmail(user.getEmail()) != null) {
             model.put("emailExists", "Email is exists!");
-            return "/login";
+            return "login";
         }
 
         String password = user.getPassword();
@@ -43,7 +43,7 @@ public class RegistrationController {
         user.setAuthProvider(AuthenticationProvider.LOCAL);
         mainService.saveUser(user);
         model.put("registrationSuccessful", "Registration successful!");
-        return "/login";
+        return "login";
     }
 
 
