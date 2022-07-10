@@ -89,8 +89,16 @@
 			<version>5.7.1</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mail -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+			<version>2.7.1</version>
+		</dependency>
 
-<!--		&lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.security.oauth.boot/spring-security-oauth2-autoconfigure &ndash;&gt;-->
+
+
+		<!--		&lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.security.oauth.boot/spring-security-oauth2-autoconfigure &ndash;&gt;-->
 <!--		<dependency>-->
 <!--			<groupId>org.springframework.security.oauth.boot</groupId>-->
 <!--			<artifactId>spring-security-oauth2-autoconfigure</artifactId>-->

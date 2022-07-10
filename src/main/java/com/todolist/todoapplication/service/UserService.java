@@ -1,22 +1,28 @@
 package com.todolist.todoapplication.service;
 
 import com.todolist.todoapplication.dto.UserDTO;
+import com.todolist.todoapplication.entity.PasswordResetToken;
 import com.todolist.todoapplication.entity.User;
 import com.todolist.todoapplication.repository.RepositoryTodo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService implements UserDetailsService {
 
     @Autowired
     private RepositoryTodo repositoryTodo;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -50,7 +56,21 @@ public class UserService implements UserDetailsService {
         return new UserDTO(user.getId(), user.getUsername());
     }
 
-    public User getUserByEmail(String email) {
+    public User findUserByEmail(String email) {
         return repositoryTodo.getUserByEmail(email);
     }
+
+//    public void createPasswordResetTokenForUser(User user, String token) {
+//        PasswordResetToken myToken = new PasswordResetToken(token, user);
+//        passwordTokenRepository.save(myToken);
+//    }
+//
+//    public void changeUserPassword(User user, String password) {
+//        user.setPassword(passwordEncoder.encode(password));
+//        repositoryTodo.saveUser(user);
+//    }
+//
+//    public Optional getUserByPasswordResetToken(String token) {
+//
+//    }
 }

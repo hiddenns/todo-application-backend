@@ -20,7 +20,8 @@
             <button>Login</button>
 
             <div class="forgot-pass" th:if="${param.error}">
-                <a class="lbl-forgot-pass underline" href="">Forgot password?</a>
+<!--                th:href="@{/forgetPassword.html}"-->
+                <a class="lbl-forgot-pass underline" href="" onclick="inRetail()" >Forgot password?</a>
             </div>
 
             <div class="login-logs">
@@ -70,6 +71,11 @@
     </div>
 
 </div>
+<script>
+    function inRetail() {
+        alert("In retail!");
+    }
+</script>
 
 </body>
 
